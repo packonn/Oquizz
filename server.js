@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 const viewsDirectory = path.join(__dirname, '/app/views');
 app.set('views', viewsDirectory);
 // Fichiers statiques
-app.use(express.static(path));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(router);
 
