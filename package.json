@@ -4,7 +4,8 @@
     "description": "Application de quizz",
     "main": "server.js",
     "scripts": {
-        "test": "node serveur.js"
+        "test": "node serveur.js",
+        "resetDB": "psql -U oquiz -d oquiz -f ./app/data/create_tables.sql"
     },
     "keywords": [],
     "author": "",
