@@ -1,6 +1,8 @@
+const client = require('../data/client');
 const CoreModel = require('./coreModel');
 
 class User extends CoreModel {
+    static table = 'user';
     firstname;
     lastname;
     email;
@@ -30,7 +32,6 @@ class User extends CoreModel {
     set password(password) {
         this.#password = password;
     }
-
     /**
      * https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript#46181
      * @param {string} emailString

@@ -1,6 +1,10 @@
+const Level = require('../models/level');
+
 const appController = {
-    index(req, res, next) {
-        res.render('home');
+    async index(req, res) {
+        const levels = await Level.findAll();
+
+        res.render(`index`, { levels });
     },
 };
 

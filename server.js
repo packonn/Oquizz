@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('./app/routers');
+const notFound = require('./app/middlewares/notFound');
 const path = require('path');
 
 require('dotenv').config();
@@ -16,6 +17,7 @@ app.set('views', viewsDirectory);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(router);
+app.use(notFound);
 
 app.listen(process.env.PORT, () => {
     console.log(`Serveur run => ${app.get(`baseUrl`)}${app.get(`port`)}`);

@@ -1,10 +1,10 @@
+const client = require('../data/client');
 const CoreModel = require('./coreModel');
 
 class Level extends CoreModel {
+    static table = 'level';
     name;
-
     /**
-     *
      * @param {object} obj {name: string, id: number}
      */
     constructor(obj) {
@@ -14,7 +14,6 @@ class Level extends CoreModel {
             // on "lève" une erreur => ça arrête tout !
             throw new Error('Level name must be a string!');
         }
-
         this.name = obj.name;
     }
 }
