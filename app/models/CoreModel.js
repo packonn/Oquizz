@@ -39,21 +39,6 @@ class CoreModel {
         return new this(result.rows[0]);
     }
 
-    async update(updateData) {
-        const column = Object.keys(updateData)
-            .map((key, index) => `"${key}" = $${index + 1}`)
-            .join(', ');
-        const values = Object.values(updateData);
-        const query = {
-            text: `UPDATE "${
-                this.constructor.table
-            }" SET ${column} WHERE id = $${values.length + 1} RETURNING *`,
-            values: [...values, this.id],
-        };
-        const result = await client.query(query);
-        return new this.constructor(result.rows[0]);
-    }
-
     static async findAll() {
         const query = `SELECT * FROM "${this.table}";`;
         const result = await client.query(query);
@@ -74,6 +59,21 @@ class CoreModel {
 
         return `La ressources demandée n'existe pas : 404`;
     }
+    async update(updateData) {
+        const column = Object.keys(updateData)
+            .map((key, index) => `"${key}" = $${index + 1}`)
+            .join(', ');
+        const values = Object.values(updateData);
+        const query = {
+            text: `UPDATE "${
+                this.constructor.table
+            }" SET ${column} WHERE id = $${values.length + 1} RETURNING *`,
+            values: [...values, this.id],
+        };
+        const result = await client.query(query);
+        return new this.constructor(result.rows[0]);
+    }
+
     async destroy() {
         const query = {
             text: `DELETE FROM "${this.constructor.table}" WHERE id = $1`,

@@ -4,14 +4,9 @@ const User = require('./app/models/user');
 
 (async () => {
     try {
-        const users = await Level.findById(4);
-        // await users.update({
-        //     name: 'Débutant',
-        // });
-
-        await users.destroy();
-
-        // console.log(users);
+        const users = await User.findById(9);
+        users.destroy();
+        console.log(users);
     } catch (error) {
         console.error(error.message);
     } finally {

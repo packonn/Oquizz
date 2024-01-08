@@ -1,4 +1,3 @@
-const client = require('../data/client');
 const CoreModel = require('./coreModel');
 
 class User extends CoreModel {
