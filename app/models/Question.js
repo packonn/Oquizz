@@ -1,27 +1,22 @@
-const CoreModel = require('./CoreModel');
+const CoreModel = require('./coreModel');
 
 class Question extends CoreModel {
-    question;
+    description;
     anecdote;
+    wiki;
     level_id;
-    answer_id;
     quiz_id;
-    constructor(
-        id,
-        question,
-        anecdote,
-        level_id,
-        answer_id,
-        quiz_id,
-        created_at,
-        updated_at
-    ) {
-        super(id, created_at, updated_at);
-        this.question = question;
-        this.anecdote = anecdote;
-        this.level_id = level_id;
-        this.answer_id = answer_id;
-        this.quiz_id = quiz_id;
+    answer_id;
+
+    constructor(obj) {
+        super(obj);
+        this.description = obj.description;
+        this.anecdote = obj.anecdote;
+        this.wiki = obj.wiki;
+        this.level_id = obj.level_id;
+        this.quiz_id = obj.quiz_id;
+        this.answer_id = obj.answer_id;
     }
 }
+
 module.exports = Question;

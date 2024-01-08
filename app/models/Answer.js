@@ -1,12 +1,13 @@
-const CoreModel = require('./CoreModel');
+const CoreModel = require('./coreModel');
 
 class Answer extends CoreModel {
     description;
     question_id;
-    constructor(id, description, question_id, created_at, updated_at) {
-        super(id, description, question_id, created_at, updated_at);
-        this.description = description;
-        this.question_id = question_id;
+
+    constructor(obj) {
+        super(obj);
+        this.description = obj.description;
+        this.question_id = obj.question_id;
     }
 }
 

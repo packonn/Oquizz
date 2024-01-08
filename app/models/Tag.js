@@ -1,10 +1,11 @@
-const CoreModel = require('./CoreModel');
+const CoreModel = require('./coreModel');
 
 class Tag extends CoreModel {
     name;
-    constructor(id, name, created_at, updated_at) {
-        super(id, created_at, updated_at);
-        this.name = name;
+
+    constructor(obj) {
+        super(obj);
+        this.name = obj.name;
     }
 }
 
