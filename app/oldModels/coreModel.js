@@ -11,20 +11,16 @@ class CoreModel {
             // on "lève" une erreur => ça arrête tout !
             throw new Error('Id must be a number!');
         }
-
         this.id = parseInt(obj.id);
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     }
-
     get id() {
         return this.#id;
     }
-
     set id(id) {
         this.#id = id;
     }
-
     static async creates(data) {
         const columns = Object.keys(data).join(', ');
         const values = Object.values(data);
@@ -33,9 +29,7 @@ class CoreModel {
             text: `INSERT INTO "${this.table}" (${columns}) VALUES (${placeholders}) RETURNING *`,
             values,
         };
-
         const result = await client.query(query);
-
         return new this(result.rows[0]);
     }
 
@@ -50,7 +44,6 @@ class CoreModel {
             text: `SELECT * FROM "${this.table}" WHERE id = $1`,
             values: [id],
         };
-
         const results = await client.query(query);
 
         if (results.rows[0]) {
@@ -73,14 +66,12 @@ class CoreModel {
         const result = await client.query(query);
         return new this.constructor(result.rows[0]);
     }
-
     async destroy() {
         const query = {
             text: `DELETE FROM "${this.constructor.table}" WHERE id = $1`,
             values: [this.id],
         };
         await client.query(query);
-
         return `La ressource demandée n'existe plus`;
     }
 }
