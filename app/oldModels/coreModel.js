@@ -1,4 +1,4 @@
-const client = require('../data/client');
+const client = require('../database/client');
 
 class CoreModel {
     static table;

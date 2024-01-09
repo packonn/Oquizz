@@ -1,10 +1,12 @@
-const Level = require('../models/level');
+const User = require('../models/user');
 
 const appController = {
     async index(req, res) {
-        const levels = await Level.findAll();
+        const users = await User.findAll();
+        const user = await User.findByPk(1);
 
-        res.render(`index`, { levels });
+        console.log(user);
+        res.render(`index`, { users });
     },
 };
 
