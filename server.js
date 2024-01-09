@@ -15,6 +15,7 @@ const viewsDirectory = path.join(__dirname, '/app/views');
 app.set('views', viewsDirectory);
 // Fichiers statiques
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
 app.use(notFound);

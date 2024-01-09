@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<!-- Welcome -->
+<div class="text-center">
+    <h2 class="h1 my-4">Page d'administration de niveaux</h2>
+</div>
+
+<div class="row mb-3 text-center flew-wrap">
+    <!-- One card -->
+    <ul class="list-group">
+      <% if(locals.levels?.length){%>
+      <% levels.forEach(level => {%> 
+        <a href="/levels/<%= level.id %>">
+          <li class="list-group-item"><%= level.name %></li>
+        </a>
+        <% }); %>
+        <% }else{ %>
+          <p>pas de level</p>
+          <%} %>
+
+    </ul>
+</div>
+
+<%- include('partials/footer') %>
