@@ -12,7 +12,6 @@ const appController = {
         // };
 
         // await User.create(user_obj);
-        console.log(users);
         res.render(`index`, { users });
     },
 };

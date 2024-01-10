@@ -7,6 +7,7 @@ const levelController = {
             levels,
         });
     },
+
     async show(req, res) {
         const { id } = req.params;
         const level = await Level.findByPk(id);
@@ -14,6 +15,17 @@ const levelController = {
             level,
         });
     },
+
+    async create(req, res) {
+        const { name } = req.body;
+
+        await Level.create({
+            name: name,
+        });
+
+        res.redirect('/levels');
+    },
+
     async update(req, res) {
         const { id } = req.params;
         const { name } = req.body;
@@ -21,9 +33,9 @@ const levelController = {
         level.update({
             name: name,
         });
-
         res.redirect(`/levels/${id}`);
     },
+
     async destroy(req, res) {
         const { id } = req.params;
         const level = await Level.findByPk(id);

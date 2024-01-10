@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<!-- Welcome -->
+<div class="text-center">
+    <h2 class="h1 my-4">Page d'administration des questions</h2>
+</div>
+
+<div class="row mb-3 text-center flew-wrap">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">question</th>
+      <th scope="col">Last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% questions.forEach(question => {%> 
+      <tr>
+        <td><%= question.id %></td>
+        <td>
+          <a href="/questions/<%= question.id %>">
+            <li class="list-group-item"><%= question.description %></li>
+          </a>
+        </td>
+        <td><%= question.Level.name %></td>
+      </tr>
+      <% }); %>
+  </tbody>
+</table>
+</div>
+
+
+<%- include('partials/footer') %>

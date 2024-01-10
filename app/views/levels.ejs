@@ -2,6 +2,7 @@
 
 <!-- Welcome -->
 <div class="text-center">
+  <a href="/levels/add">Ajouter un level</a>
     <h2 class="h1 my-4">Page d'administration de niveaux</h2>
 </div>
 
@@ -17,8 +18,12 @@
         <% }else{ %>
           <p>pas de level</p>
           <%} %>
-
     </ul>
+
+    <form action="/levels/add" method="post">
+      <input type="text" name="name" id="name">
+      <button class="btn btn-primary">Créer un niveau</button>
+    </form>
 </div>
 
 <%- include('partials/footer') %>

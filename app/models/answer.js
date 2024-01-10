@@ -1,10 +1,9 @@
 const { Model, DataTypes, literal } = require('sequelize');
 const getConnexion = require('../database/sequelizeClient');
 
-class User extends Model {}
+class Answer extends Model {}
 
-User.init(
-    // * Le premier objet est la définition du modèle
+Answer.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -12,10 +11,7 @@ User.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        firstname: { type: DataTypes.TEXT },
-        lastname: { type: DataTypes.TEXT },
-        email: { type: DataTypes.TEXT, allowNull: false },
-        password: { type: DataTypes.TEXT, allowNull: false },
+        description: { type: DataTypes.TEXT },
         created_at: {
             type: DataTypes.DATE,
             defaultValue: literal(`CURRENT_TIMESSTAMP`),
@@ -26,13 +22,11 @@ User.init(
             allowNull: true,
         },
     },
-    // * Le deuxième objet est la configuration du modèle (métadonnées, connexion à la BDD etc)
     {
-        // * Obligatoire pour chaque modèle
         sequelize: getConnexion(),
-        tableName: 'user',
-        modelName: `User`,
+        tableName: 'answer',
+        modelName: `Answer`,
     }
 );
 
-module.exports = User;
+module.exports = Answer;
