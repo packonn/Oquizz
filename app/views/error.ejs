@@ -1,11 +1,24 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>error</h1>
-    </body>
-</html>
+<%- include('partials/header') %>
+
+<% if (locals.message) { %>
+    <div class="error">
+
+        <p><%= message %></p>
+        <p><a href="/">Retour à l'accueil</a></p>
+
+
+        <% if (locals.stack) { %>
+            <pre>
+                <%= stack %>
+            </pre>
+        <% }%>
+
+
+
+        <% if (locals.status === 404) { %>
+            <img src="/img/404.png" alt="Page not found">
+        <% } %>
+    </div>
+<% } %>
+
+<%- include('partials/footer') %>

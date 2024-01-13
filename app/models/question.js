@@ -1,46 +1,46 @@
-const { Model, DataTypes, literal } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const getConnexion = require('../database/sequelizeClient');
-const Level = require('./level'); // Import the Level model
 
 class Question extends Model {}
 
 Question.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            unique: true,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        question: { type: DataTypes.TEXT },
-        description: { type: DataTypes.TEXT },
-        anecdote: { type: DataTypes.TEXT },
-        wiki: { type: DataTypes.TEXT },
-        level_id: {
-            // Define the foreign key
-            type: DataTypes.INTEGER,
-            references: {
-                model: Level,
-                key: 'id',
-            },
-        },
-        created_at: {
-            type: DataTypes.DATE,
-            defaultValue: literal(`CURRENT_TIMESSTAMP`),
+        question: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
-        updated_at: {
-            type: DataTypes.DATE,
-            allowNull: true,
+
+        description: {
+            type: DataTypes.TEXT,
+            // * Si on souhaite un varchar avec un longueur max, ce n'est pas compatible avec postgres : il faudra enlever le nombre de caractères
+            // test: DataTypes.STRING(64),
+        },
+
+        anecdote: {
+            type: DataTypes.TEXT,
+        },
+
+        wiki: {
+            type: DataTypes.TEXT,
+        },
+
+        level_id: {
+            type: DataTypes.INTEGER,
+        },
+
+        quiz_id: {
+            type: DataTypes.INTEGER,
+        },
+
+        answer_id: {
+            type: DataTypes.INTEGER,
         },
     },
     {
         sequelize: getConnexion(),
         tableName: 'question',
-        modelName: `Question`,
+        modelName: 'Question',
     }
 );
-
-Question.belongsTo(Level, { foreignKey: 'level_id' });
 
 module.exports = Question;

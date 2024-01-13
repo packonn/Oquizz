@@ -19,7 +19,14 @@
                 <tr>
                     <td><%= level.id %></td>
                     <td><%= level.name %></td>
-                    <td><a href="/levels/<%= level.id %>/delete" type="button" class="btn btn-danger js-delete-level">Effacer</a></td>
+                    <td>
+                        <form action="/levels/<%= level.id %>/delete" method="POST">
+                            <button
+                                type="submit"
+                                class="btn btn-danger js-delete-level">Effacer
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -28,7 +35,6 @@
             <input type="text" value="<%= level.name %>" name="name">
             <button type="submit">Envoyer</button>
         </form>
-
     </div>
 <% } else { %>
     <p>Pas de ressource correspondantes à la recherche</p>

@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<h1>Thèmes</h1>
+
+<% if (locals.tags?.length) { %>
+
+    <% for( let tag of tags ) { %>
+        <div>
+
+            <span class="badge bg-primary p-2 mb-1">
+                <a href="/tags/<%= tag.id %>/quizzes" class="text-white">
+                    <%= tag.name %>
+                </a>
+            </span>
+
+            <% if (tag.quizList?.length) { %>
+                <ul>
+                    <% tag.quizList.forEach(quiz => { %>
+                        <li><a href="/quiz/<%= quiz.id %>"><%= quiz.title %></a></li>
+                    <% }) %>
+
+                </ul>
+            <% } else { %>
+                <p class="ms-2">Aucun quizz dans cette catégorie pour le moment....</p>
+            <% }  %>
+
+        </div>
+    <% } %>
+
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,31 +1,24 @@
-const { Model, DataTypes, literal } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const getConnexion = require('../database/sequelizeClient');
 
 class Answer extends Model {}
 
 Answer.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            unique: true,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        description: { type: DataTypes.TEXT },
-        created_at: {
-            type: DataTypes.DATE,
-            defaultValue: literal(`CURRENT_TIMESSTAMP`),
+        description: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
-        updated_at: {
-            type: DataTypes.DATE,
-            allowNull: true,
+
+        question_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
     },
     {
         sequelize: getConnexion(),
         tableName: 'answer',
-        modelName: `Answer`,
+        modelName: 'Answer',
     }
 );
 
